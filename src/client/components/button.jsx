@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
-import s from './button.css'
+import './button.scss'
 
 const Button = ({ action, actionLabel }) => (
-  <button className={s.button} onClick={action}>{actionLabel}</button>
+  <button onClick={action}>{actionLabel}</button>
 )
 
 Button.propTypes = {

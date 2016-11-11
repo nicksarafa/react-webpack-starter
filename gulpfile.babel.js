@@ -6,9 +6,12 @@ import del from 'del'
 import eslint from 'gulp-eslint'
 import webpack from 'webpack-stream'
 import mocha from 'gulp-mocha'
+import sourcemaps from 'gulp-sourcemaps'
+import sass from 'gulp-sass'
 import webpackConfig from './webpack.config.babel'
 
 const paths = {
+  allSrcStyles: 'src/**/*.?(s)css',
   allSrcJs: 'src/**/*.js?(x)',
   serverSrcJs: 'src/server/**/*.js?(x)',
   sharedSrcJs: 'src/shared/**/*.js?(x)',
@@ -18,12 +21,14 @@ const paths = {
   libDir: 'lib',
   distDir: 'dist',
   clientBundle: 'dist/client-bundle.js?(.map)',
+  clientStyles: 'dist/client',
   allLibTests: 'lib/test/**/*.js',
 }
 
 gulp.task('clean', () => del([
   paths.libDir,
   paths.clientBundle,
+  paths.clientStyles,
 ]))
 
 gulp.task('build', ['lint', 'clean'], () => {
@@ -54,6 +59,13 @@ gulp.task('lint', () => {
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
 })
+
+// gulp.task('sass', () => {
+//   return gulp.src(paths.allSrcStyles)
+//     .pipe(sourcemaps.init())
+//       .pipe(sass().on('error', sass.logError))
+//     .pipe(sourcemaps.write('./'))
+// })
 
 gulp.task('test', ['build'], () =>
   gulp.src(paths.allLibTests)

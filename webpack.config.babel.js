@@ -9,12 +9,12 @@ export default {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: [/node_modules/],
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!sass!autoprefixer'),
+        test: /\.scss?$/,
+        loader: ExtractTextPlugin.extract('css!sass'),
       },
     ],
   },
@@ -24,6 +24,6 @@ export default {
     }),
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.css'],
   },
 };

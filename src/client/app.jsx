@@ -13,8 +13,10 @@ const store = createStore(combineReducers({
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>hello, 🌎</div>
-    <Button action="console.log('hello')" actionLabel="test" />
+    <div>
+      <div>hello, 🌎</div>
+      <Button action="console.log('hello')" actionLabel="test" />
+    </div>
   </Provider>
   , document.querySelector('.app')
 )
