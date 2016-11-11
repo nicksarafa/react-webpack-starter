@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 
 import React, { PropTypes } from 'react'
+import './Button.css'
 
 const Button = ({ action, actionLabel }) => (
   <button
     onClick={action}
     className="button"
   >
-    {actionLabel}
+    ({ actionLabel })
   </button>
 )
 

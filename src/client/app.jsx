@@ -5,7 +5,8 @@ import { createStore } from 'redux'
 import { combineReducers } from 'redux-immutable'
 import { Provider } from 'react-redux'
 
-import Button from './components/button'
+import Button from './components/Button/Button'
+import Message from './components/Message/Message'
 
 const store = createStore(combineReducers({
   // List ../reducers here to create Redux store
@@ -14,7 +15,7 @@ const store = createStore(combineReducers({
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      <div>hello, 🌎</div>
+      <Message />
       <Button />
     </div>
   </Provider>

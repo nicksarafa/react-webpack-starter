@@ -21,7 +21,7 @@ const paths = {
   libDir: 'lib',
   distDir: 'dist',
   clientBundle: 'dist/client-bundle.js?(.map)',
-  clientStyles: 'dist/client',
+  clientStyles: 'dist/styles.css',
   allLibTests: 'lib/test/**/*.js',
 }
 
