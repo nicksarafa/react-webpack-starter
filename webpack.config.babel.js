@@ -4,26 +4,30 @@ export default {
   output: {
     filename: 'client-bundle.js',
   },
-  devtool: 'source-map',
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel',
         exclude: [/node_modules/],
+        loader: 'babel',
       },
       {
-        test: /\.scss?$/,
-        loader: ExtractTextPlugin.extract('css!sass'),
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css'),
+      },
+      {
+        test: /\.scss$/,
+        loader: [
+          ExtractTextPlugin.extract(
+            'style',
+            'css-loader?modules&importLoaders=1&localIdenName=[path]___[name]__[local]___[hash:base64:5]',
+          ),
+        ],
       },
     ],
   },
-  plugins: [
-    new ExtractTextPlugin('styles.css', {
-      allChunks: true,
-    }),
-  ],
+  plugins: [new ExtractTextPlugin('styles.css')],
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css'],
+    extensions: ['', '.js', '.jsx', '.css', '.scss'],
   },
 };

@@ -1,9 +1,20 @@
-import React, { PropTypes } from 'react'
-import './button.scss'
+/* eslint-disable react/prefer-stateless-function */
 
-const Button = ({ action, actionLabel }) => (
-  <button onClick={action}>{actionLabel}</button>
-)
+import React, { Component, PropTypes } from 'react'
+import './button.css'
+
+class Button extends Component {
+  render() {
+    return (
+      <button
+        className="button"
+        onClick={this.props.action}
+      >
+        {this.props.actionLabel}
+      </button>
+    )
+  }
+}
 
 Button.propTypes = {
   action: PropTypes.func.isRequired,
