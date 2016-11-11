@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <div>
       <div>hello, 🌎</div>
-      <Button action="console.log('hello')" actionLabel="test" />
+      <Button />
     </div>
   </Provider>
   , document.querySelector('.app')
