@@ -1,3 +1,5 @@
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+
 export default {
   output: {
     filename: 'client-bundle.js',
@@ -10,8 +12,17 @@ export default {
         loader: 'babel-loader',
         exclude: [/node_modules/],
       },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css!sass!autoprefixer'),
+      },
     ],
   },
+  plugins: [
+    new ExtractTextPlugin('styles.css', {
+      allChunks: true,
+    }),
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
