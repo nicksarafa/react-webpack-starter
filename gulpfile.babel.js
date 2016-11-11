@@ -45,6 +45,7 @@ gulp.task('main', ['test'], () =>
 
 gulp.task('watch', () => {
   gulp.watch(paths.allSrcJs, ['main'])
+  gulp.watch(paths.allSrcStyles, ['sass'])
 })
 
 gulp.task('default', ['watch', 'main'])
@@ -60,12 +61,13 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError())
 })
 
-// gulp.task('sass', () => {
-//   return gulp.src(paths.allSrcStyles)
-//     .pipe(sourcemaps.init())
-//       .pipe(sass().on('error', sass.logError))
-//     .pipe(sourcemaps.write('./'))
-// })
+gulp.task('sass', ['main'], () => {
+  return gulp.src(paths.allSrcStyles)
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(paths.libDir))
+})
 
 gulp.task('test', ['build'], () =>
   gulp.src(paths.allLibTests)
